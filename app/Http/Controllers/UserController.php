@@ -2,81 +2,95 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
-use App\Http\Requests\StorePostRequest;
-use App\Http\Requests\UpdatePostRequest;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return JsonResponse
      */
-    public function index()
+    public function index(): JsonResponse
     {
         return new JsonResponse([
-
-            'data' => 'adil shah'
-
+            'data' => 'index',
         ]);
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return Response
+     */
+    public function create()
+    {
+        //
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StorePostRequest  $request
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return JsonResponse
      */
-    public function store(StorePostRequest $request)
+    public function store(Request $request): JsonResponse
     {
-        return 'adil';
+        return new JsonResponse([
+        'data' => 'posted',
+        ]);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Http\Response
+     * @param int $id
+     * @return JsonResponse
      */
-    public function show(User $user)
+    public function show(int $id)
     {
-        return new \Illuminate\Http\JsonResponse([
-
-            'data' => $user
-
+        return new JsonResponse([
+            'data' => 'show',
         ]);
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param int $id
+     * @return Response
+     */
+    public function edit(int $id)
+    {
+        //
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdatePostRequest  $request
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @param  int  $id
+     * @return JsonResponse
      */
-    public function update(UpdatePostRequest $request, User $user)
+    public function update(Request $request, int $id): JsonResponse
     {
-        return new \Illuminate\Http\JsonResponse([
-
-            'data' => 'updated'
-
+        return new JsonResponse([
+            'data' => 'updated',
         ]);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Http\Response
+     * @param int $id
+     * @return Response
      */
-    public function destroy(User $user)
+    public function destroy(int $id): Response|JsonResponse
     {
-        return new \Illuminate\Http\JsonResponse([
-
-            'data' => 'deleted'
-
+        return new JsonResponse([
+            'data' => 'deleted',
         ]);
     }
 }

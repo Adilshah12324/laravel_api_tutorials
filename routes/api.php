@@ -14,8 +14,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::apiResource('/users',\App\Http\Controllers\UserController::class);
+//Route::apiResource('/users',\App\Http\Controllers\UserController::class);
 
+Route::prefix('V1')->group(function (){
+    require __DIR__ . '/api/V1/users.php';
+    require __DIR__ . '/api/V1/posts.php';
+    require __DIR__ . '/api/V1/comments.php';
+
+});
+
+//Route::post('/users', function (){
+//    return new \Illuminate\Http\JsonResponse([
+//        'data' => 'posted',
+//    ]);
+//});
 
 
 //Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
